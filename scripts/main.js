@@ -1,7 +1,8 @@
 let numberOne = null;
 let numberTwo = null;
-let calculatorOperator = null;
+let operator = null;
 
+/*
 var mathOperation = {
   "+":function(num1, num2) {return num1 + num2},
   "-":function(num1, num2) {return num1 - num2},
@@ -12,6 +13,7 @@ var mathOperation = {
 function operate(num1, num2, operator) {
   return mathOperation[operator](num1,num2);
 }
+*/
 
 function input(numSelected) {
   let currentDisplay = document.getElementById("mainbody1-screen").innerHTML;
@@ -40,50 +42,44 @@ function calculateDisplay(oper) {
   if (numberOne == null && numberTwo == null) {
     numberOne = document.getElementById("mainbody1-screen").innerHTML;
     document.getElementById("mainbody1-screen").innerHTML = 0;
-    calculatorOperator = oper;
+    operator = oper;
   } else if (oper == '='){
     numberTwo = document.getElementById("mainbody1-screen").innerHTML;
-    display = numberOne + calculatorOperator + numberTwo;
+    display = numberOne + operator + numberTwo;
     document.getElementById("mainbody1-screen").innerHTML = new Function('return ' + display)()
     numberOne = null;
     numberTwo = null;
-    calculatorOperator = null;
+    operator = null;
   } else {
     numberTwo = document.getElementById("mainbody1-screen").innerHTML;
-    display = numberOne + calculatorOperator + numberTwo;
+    display = numberOne + operator + numberTwo;
     document.getElementById("mainbody1-screen").innerHTML = new Function('return ' + display)()
     numberOne = null;
     numberTwo = null;
-    calculatorOperator = oper;
+    operator = oper;
   }
 }
 */
 
 function calculateDisplay(oper) {
-  if (numberOne == null && calculatorOperator == null && numberTwo == null) {
+  if (numberOne == null) {
     numberOne = document.getElementById("mainbody1-screen").innerHTML;
     document.getElementById("mainbody1-screen").innerHTML = 0;
-    calculatorOperator = oper;
-  } else if (numberOne != null && calculatorOperator != null && numberTwo == null) {
+    operator = oper;
+  } else if (oper == '=') {
     numberTwo = document.getElementById("mainbody1-screen").innerHTML;
-    display = numberOne + calculatorOperator + numberTwo;
+    display = numberOne + operator + numberTwo;
+    document.getElementById("mainbody1-screen").innerHTML = new Function('return ' + display)();
+    numberOne = null;
+    numberTwo = null;
+    operator = null;
+  } else {
+    numberTwo = document.getElementById("mainbody1-screen").innerHTML;
+    display = numberOne + operator + numberTwo;
     document.getElementById("mainbody1-screen").innerHTML = 0;
     numberOne = new Function('return ' + display)();
     numberTwo = null;
-    calculatorOperator = oper;
-  } else if (oper == '='){
-    numberTwo = document.getElementById("mainbody1-screen").innerHTML;
-    display = numberOne + calculatorOperator + numberTwo;
-    document.getElementById("mainbody1-screen").innerHTML = new Function('return ' + display)();
-    numberOne = null;
-    numberTwo = null;
-    calculatorOperator = null;
-  } else {
-    numberTwo = document.getElementById("mainbody1-screen").innerHTML;
-    display = numberOne + calculatorOperator + numberTwo;
-    document.getElementById("mainbody1-screen").innerHTML = new Function('return ' + display)();
-    numberOne = null;
-    numberTwo = null;
-    calculatorOperator = oper;
+    operator = oper;
   }
+
 }
