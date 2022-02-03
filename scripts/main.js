@@ -14,7 +14,7 @@ function memoryCall() {
 }
 
 function deleteNum() {
-  let numberDigits = document.getElementById("mainbody1-screen").innerHTML.length;
+  let numberDigits = document.getElementById("mainbody1-screen").innerHTML;
   let displayValue = document.getElementById("mainbody1-screen").innerHTML;
 
   if (numberDigits <= 1) {
@@ -51,15 +51,19 @@ function calculateDisplay(oper) {
   } else if (oper == '=') {
     numberTwo = document.getElementById("mainbody1-screen").innerHTML;
     display = numberOne + operator + numberTwo;
-    document.getElementById("mainbody1-screen").innerHTML = new Function('return ' + display)();
+    let answer = new Function('return ' + display)();
+    answer = (answer*10)/10;
+    document.getElementById("mainbody1-screen").innerHTML = answer;
     numberOne = null;
     numberTwo = null;
     operator = null;
   } else {
     numberTwo = document.getElementById("mainbody1-screen").innerHTML;
     display = numberOne + operator + numberTwo;
+    let answer = new Function('return ' + display)();
+    answer = (answer*10)/10;
     document.getElementById("mainbody1-screen").innerHTML = 0;
-    numberOne = new Function('return ' + display)();
+    numberOne = answer;
     numberTwo = null;
     operator = oper;
   }
