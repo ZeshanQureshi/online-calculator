@@ -17,9 +17,9 @@
       <div id = "mainbody1-screen">0</div>
 
 
-      <button class = "mainbody1-number" id = "M">M</button>
-      <button class = "mainbody1-number" id = "M+">M+</button>
-      <button class = "mainbody1-number" id = "DEL">DEL</button>
+      <button onclick = "memoryCall()"class = "mainbody1-number" id = "M">M</button>
+      <button onclick = "memoryStore()" class = "mainbody1-number" id = "M+">M+</button>
+      <button onclick = "deleteNum()" class = "mainbody1-number" id = "DEL">DEL</button>
       <button onclick = "calculateDisplay('+')" class = "mainbody1-number" id = "+">+</button>
       <br>
       <button onclick = "input(7)" class = "mainbody1-number" id = "7">7</button>
@@ -38,7 +38,7 @@
       <button onclick = "calculateDisplay('/')" class = "mainbody1-number" id = "/">÷</button>
       <br>
       <button onclick = "input(0)" class = "mainbody1-number" id = "0">0</button>
-      <button class = "mainbody1-number">.</button>
+      <button onclick = "input('.')" class = "mainbody1-number">.</button>
       <button onclick = "clearBoard()" class = "mainbody1-number">CLR</button>
       <button onclick = "calculateDisplay('=')" class = "mainbody1-number" id = "=">=</button>
     

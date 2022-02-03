@@ -2,30 +2,37 @@ let numberOne = null;
 let numberTwo = null;
 let operator = null;
 
-/*
-var mathOperation = {
-  "+":function(num1, num2) {return num1 + num2},
-  "-":function(num1, num2) {return num1 - num2},
-  "*":function(num1, num2) {return num1 * num2},
-  "/":function(num1, num2) {return num1 / num2},
+let memoryValue = null;
+
+function memoryStore() {
+  memoryValue = document.getElementById("mainbody1-screen").innerHTML;
+  document.getElementById("mainbody1-screen").innerHTML = 0;
 }
 
-function operate(num1, num2, operator) {
-  return mathOperation[operator](num1,num2);
+function memoryCall() {
+  document.getElementById("mainbody1-screen").innerHTML = memoryValue;
 }
-*/
+
+function deleteNum() {
+  let numberDigits = document.getElementById("mainbody1-screen").innerHTML.length;
+  let displayValue = document.getElementById("mainbody1-screen").innerHTML;
+
+  if (numberDigits <= 1) {
+    document.getElementById("mainbody1-screen").innerHTML = 0;
+  } else {
+    document.getElementById("mainbody1-screen").innerHTML = displayValue.substring(0, numberDigits - 1);
+  }
+}
 
 function input(numSelected) {
   let currentDisplay = document.getElementById("mainbody1-screen").innerHTML;
 
-  if (currentDisplay == "0") {
+  if (currentDisplay == "0" && currentDisplay % 1 == 0) {
     currentDisplay = "";
   }
 
-  if (currentDisplay.length < 16)
+  if (currentDisplay.length < 16 && currentDisplay % 1 == 0)
   document.getElementById("mainbody1-screen").innerHTML = currentDisplay + numSelected;
-  //document.getElementById("mainbody1-screen").innerHTML = parseInt(currentDisplay + numSelected);
-    
 }
 
 function clearBoard() {
@@ -35,31 +42,6 @@ function clearBoard() {
   numberTwo = null;
   calculatorOperator = null;
 }
-
-/*
-function calculateDisplay(oper) {
-
-  if (numberOne == null && numberTwo == null) {
-    numberOne = document.getElementById("mainbody1-screen").innerHTML;
-    document.getElementById("mainbody1-screen").innerHTML = 0;
-    operator = oper;
-  } else if (oper == '='){
-    numberTwo = document.getElementById("mainbody1-screen").innerHTML;
-    display = numberOne + operator + numberTwo;
-    document.getElementById("mainbody1-screen").innerHTML = new Function('return ' + display)()
-    numberOne = null;
-    numberTwo = null;
-    operator = null;
-  } else {
-    numberTwo = document.getElementById("mainbody1-screen").innerHTML;
-    display = numberOne + operator + numberTwo;
-    document.getElementById("mainbody1-screen").innerHTML = new Function('return ' + display)()
-    numberOne = null;
-    numberTwo = null;
-    operator = oper;
-  }
-}
-*/
 
 function calculateDisplay(oper) {
   if (numberOne == null) {
@@ -81,5 +63,4 @@ function calculateDisplay(oper) {
     numberTwo = null;
     operator = oper;
   }
-
 }
